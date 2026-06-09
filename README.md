@@ -17,22 +17,7 @@ In large-scale energy operations, equipment degradation and microscopic gas leak
 
 Minutes wasted reading documentation during an active failure can mean the difference between a minor patch and a catastrophic HSE (Health, Safety, and Environment) incident.
 
-[Sensor Telemetry & IoT Edge]
-                 │
-                 ▼
-     ┌───────────────────────┐
-     │       Fabric IQ       │  <-- Maps assets, pipelines, and
-     └___________┬___________┘      operational dependencies
-                 │
-                 ▼
-     ┌───────────────────────┐
-     │      Foundry IQ       │  <-- Cross-references engineering manuals,
-     └___________┬___________┘      HSE regulations, & ISO standards
-                 │
-                 ▼
-     ┌───────────────────────┐
-     │        Work IQ        │  <-- Dispatches work orders & alerts
-     └───────────────────────┘      to the engineering team on shift
+
 
      ### Technical Architecture & Microsoft IQ Integration
 Project Sentinel coordinates three distinct intelligence layers to solve complex engineering issues:
