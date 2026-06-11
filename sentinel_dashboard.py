@@ -303,7 +303,7 @@ def run_assessment(row_id: int, target_sensor: str):
         f"Power        : {round(power_kw,2)} kW  (dev: {power_dev:+} kW)"
     )
 
-    sat = fetch_satellite_methane(bbox=[0.0, 59.0, 5.0, 62.0], date_range="")
+    sat = fetch_satellite_methane(bbox=[0.0, 59.0, 5.0, 62.0], date_range="2026-01-01/2026-06-14")
     sat_summary = (
         f"Status    : {sat['status']}\n"
         f"Source    : {sat.get('source', 'N/A')}\n"
