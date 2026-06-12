@@ -6,6 +6,10 @@ Designed for running in a general Python environment (Gradio UI if available).
 """
 
 import os
+os.environ["AZURE_OPENAI_ENDPOINT"] = "https://sentinel-project-resource.openai.azure.com/"
+os.environ["AZURE_OPENAI_KEY"]      = "8cDBVIAG7qOQ0VSPS6SYJD9PrMjqjz8g5XuBIyGeHn1Qb5InGpwJJQQJ99CFACHYHv6XJ3w3AAAAACOG31zn"
+os.environ["AZURE_DEPLOYMENT"]      = "Phi-4-mini-instruct"
+print("Foundry config set")
 import io
 import math
 import json
