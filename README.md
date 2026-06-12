@@ -79,12 +79,7 @@ python sentinel_dashboard.py
 
 The Gradio dashboard will launch and provide a public share link.
 
-### Option 1 — Live Demo (Recommended for judges)
-Open `Project_Sentinel_Brain.ipynb` in **Databricks**.
-This is the primary demo environment where all three live data sources 
-(UCI telemetry, ESA satellite, Equinor P&IDs) are connected and working.
-
-### Option 2 — Standalone Python
+### Execution
 Run `sentinel_dashboard.py` in any Python environment:
 ```bash
 pip install -r requirements.txt
