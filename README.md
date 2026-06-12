@@ -71,20 +71,13 @@ pip install -r requirements.txt
 ```
 
 ### Run the dashboard (Databricks or local)
-```bash
-# In Databricks — open Project_Sentinel_Brain.ipynb and run all cells
+
 # Locally:
 python sentinel_dashboard.py
 ```
 
 The Gradio dashboard will launch and provide a public share link.
 
-### Execution
-Run `sentinel_dashboard.py` in any Python environment:
-```bash
-pip install -r requirements.txt
-python sentinel_dashboard.py
-```
 This launches the same Gradio dashboard locally without Databricks.
 
 > **Note for judges:** Both files run the same core logic. 
