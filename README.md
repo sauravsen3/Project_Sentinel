@@ -74,6 +74,8 @@ pip install -r requirements.txt
 
 # Locally:
 python sentinel_dashboard.py
+
+Link: https://sauravsen34-project-sentinel.hf.space
 ```
 
 The Gradio dashboard will launch and provide a public share link.
