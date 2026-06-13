@@ -56,7 +56,7 @@ Project Sentinel is an intelligent safety agent that bridges the gap between har
 | Source | Description | Licence |
 |--------|-------------|---------|
 | [UCI AI4I 2020](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset) | 10,000-row predictive maintenance telemetry dataset | CC BY 4.0 |
-| [ESA Sentinel-5P TROPOMI](https://catalogue.dataspace.copernicus.eu) | Live atmospheric CH4 column data | ESA Open Access |
+| [ESA Sentinel-5P TROPOMI]([https://catalogue.dataspace.copernicus.eu](https://www.tropomi.eu/data-products/carbon-monoxide)) | Live atmospheric CH4 column data | ESA Open Access |
 | [Equinor Huldra P&IDs](https://marketplace.databricks.com) | Publicly released offshore platform schematics | Equinor Open Data |
 
 > ⚠️ This prototype uses only publicly available data. No proprietary client data is used anywhere in this system.
