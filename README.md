@@ -8,7 +8,7 @@ An autonomous industrial safety agent that fuses live mechanical telemetry, sate
 ---
 
 ## 🎬 Demo Video
-*[Add your YouTube/Vimeo link here]*
+(https://www.youtube.com/watch?v=qJLnQ7RXbOg)
 
 ---
 
