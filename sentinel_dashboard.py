@@ -185,21 +185,71 @@ def _rule_based_trace(telemetry: Dict[str, Any], leak_rate: float, surge_bar: fl
         )
 
 
-def get_foundry_assessment(telemetry: Dict[str, Any], leak_rate: float, surge_bar: float, system_code: str) -> str:
-    """Call Azure AI Foundry (if configured) or return a deterministic fallback trace."""
+def get_foundry_assessment(telemetry: Dict[str, Any], leak_rate: float,
+                            surge_bar: float, system_code: str,
+                            safe_time: float, doc: str, sat: Dict) -> str:
+    """
+    Calls Azure AI Foundry (Phi-4-mini-instruct) with structured telemetry,
+    engineering context and satellite data for grounded safety reasoning.
+    """
     client = _get_openai_client()
+
     if client:
-        prompt = (
-            "You are an industrial safety analyst reviewing real-time asset telemetry.\n"
-            "Your role is to reason step-by-step (ReAct pattern) and recommend operator actions.\n"
-            "Never mandate automated shutdowns — always recommend field operator verification first.\n"
-            "Follow Goal Zero safety principles: no harm to people, assets, or environment.\n\n"
-            f"Asset: {system_code}\n"
-            f"Telemetry (UCI AI4I 2020 dataset): RPM={telemetry['rpm']}, Torque={telemetry['torque']}, "
-            f"Tool_wear={telemetry['tool_wear']}, Failure={telemetry['process_failure']}\n\n"
-            f"Derived indicators: leak_rate={leak_rate} kg/hr, surge_bar={surge_bar} bar\n\n"
-            "Respond with:\nTHOUGHT: [your reasoning]\nRISK LEVEL: [NOMINAL / WARNING / CRITICAL]\n"
-            "RECOMMENDED ACTION: [one clear sentence for the field operator]\nCAVEAT: [one sentence on what should be verified by a qualified engineer]"
+        prompt = f"""You are an autonomous industrial safety agent reasoning about offshore platform equipment.
+Follow Goal Zero safety principles: no harm to people, assets, or environment.
+Never mandate automated shutdowns — always recommend field operator verification first.
+
+Asset: {system_code}
+Reference drawing: {doc}
+Valve designation: {system_code}-V01
+Transmitter: PT-{system_code}-01
+
+Telemetry (UCI AI4I 2020 dataset, CC BY 4.0):
+- RPM:          {telemetry['rpm']}
+- Torque:       {telemetry['torque']} Nm
+- Tool Wear:    {telemetry['tool_wear']} min
+- Failure Flag: {telemetry['process_failure']}
+
+Physics calculations:
+- Estimated emission proxy: {leak_rate} kg/hr (OGMP 2.0 Level 4 methodology)
+- Hydraulic surge pressure:  {surge_bar} bar (Joukowski equation)
+- Safe valve closure time:   {safe_time}s minimum to prevent fluid hammer
+
+Satellite context:
+- ESA Sentinel-5P TROPOMI CH4 scene: {sat.get('scene_id', 'N/A')}
+- Acquisition: {sat.get('acquired', 'N/A')}
+- Status: {sat.get('status', 'N/A')}
+
+Reason through this problem using EXACTLY this format:
+
+OBSERVE: [what the telemetry data shows about current asset condition]
+INVESTIGATE: [what the satellite methane data and emission proxy indicate]
+GROUND: [what engineering constraints apply — reference the drawing and Joukowski calculation]
+REASON: [your combined risk assessment across all sources]
+RISK LEVEL: [NOMINAL / WARNING / CRITICAL]
+ACT: [one specific recommended action for the field operator]
+CAVEAT: [one sentence on what must be verified by a qualified engineer before any action]"""
+
+        try:
+            response = client.chat.completions.create(
+                model=AZURE_DEPLOYMENT,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=400,
+                temperature=0.2
+            )
+            return (
+                f"🤖 [Azure AI Foundry — {AZURE_DEPLOYMENT}]\n\n"
+                + response.choices[0].message.content
+            )
+        except Exception as e:
+            return (
+                f"[Foundry call failed: {e}]\n\n"
+                + _rule_based_trace(telemetry, leak_rate, surge_bar, system_code)
+            )
+    else:
+        return (
+            "⚠️ Azure AI Foundry not configured.\n\n"
+            + _rule_based_trace(telemetry, leak_rate, surge_bar, system_code)
         )
         try:
             response = client.chat.completions.create(
@@ -337,8 +387,12 @@ def run_assessment(row_id: int, target_sensor: str):
         f"Note        : In production, replace with client document store via Azure AI Search."
     )
 
-    reasoning = get_foundry_assessment(tel, leak_rate, surge_bar, system_code)
-
+    reasoning = get_foundry_assessment(
+    tel, leak_rate, surge_bar, system_code,
+    safe_time=safe_time,
+    doc=doc,
+    sat=sat
+)
     card = {
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
         "type": "AdaptiveCard",
