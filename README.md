@@ -1,132 +1,320 @@
 # Project Sentinel 🛡️
 
-> **Microsoft Agents League Hackathon 2026** — *Creative Apps Track*
-> Built with GitHub Copilot
+### Microsoft Agents League Hackathon 2026 — Reasoning Agents Track
 
-An autonomous industrial safety agent that fuses live mechanical telemetry, satellite methane monitoring, and grounded engineering schematics to protect workers and eliminate fugitive emissions on heavy energy infrastructure.
+### Powered by Azure AI Foundry and Microsoft Phi-4-mini-instruct
 
----
+Project Sentinel is an autonomous industrial safety agent that combines predictive maintenance telemetry, satellite methane monitoring, engineering schematics, and AI reasoning to help engineers identify equipment failures, reduce fugitive emissions, and respond faster to industrial safety incidents.
 
-## 🎬 Demo Video
-(https://www.youtube.com/watch?v=qJLnQ7RXbOg)
+Built by a solo mechatronics engineer using Azure AI Foundry, Microsoft Phi-4-mini-instruct, GitHub Copilot, and Microsoft Teams.
 
 ---
 
-## ⚠️ The Problem
+# 🚀 Quick Links
 
-In large-scale energy operations, equipment degradation and fugitive gas leaks pose severe environmental and human safety risks. When anomalies occur, field engineers face extreme cognitive overload — manually hunting through thousands of pages of static P&ID blueprints to locate critical isolation workflows.
+### 🎬 Demo Video
 
-Minutes lost reading documentation during an active failure can mean the difference between a minor patch and a catastrophic HSE incident.
+https://www.youtube.com/watch?v=qJLnQ7RXbOg
 
----
+### 🌐 Live Demo
 
-## 💡 The Solution
+https://sauravsen34-project-sentinel.hf.space
 
-Project Sentinel is an intelligent safety agent that bridges the gap between hardware telemetry and operational intelligence. It autonomously:
+### 📂 GitHub Repository
 
-1. **Ingests live mechanical telemetry** from the UCI AI4I 2020 Predictive Maintenance dataset
-2. **Cross-references satellite methane data** from ESA Sentinel-5P TROPOMI via ESA Copernicus Data Space
-3. **Grounds reasoning in real engineering documents** using publicly released Equinor Huldra P&ID schematics
-4. **Routes verified alerts** to field operators via Microsoft Teams Adaptive Cards
+https://github.com/sauravsen3/Project_Sentinel
 
 ---
 
-## 🏗️ Architecture
+# ⚠️ The Problem
 
+Heavy energy infrastructure such as offshore platforms, processing facilities, and industrial plants rely on thousands of interconnected mechanical systems.
+
+When equipment begins to fail, engineers often face two simultaneous challenges:
+
+* Detecting mechanical degradation before a critical failure occurs
+* Identifying the correct isolation and mitigation procedures buried within large engineering document sets
+
+At the same time, fugitive methane emissions remain one of the most significant industrial contributors to climate change.
+
+During a developing incident, valuable minutes can be lost manually reviewing documentation and correlating operational data.
+
+Project Sentinel was designed to reduce this delay by providing a reasoning-based industrial safety agent that combines multiple information sources into a single operational view.
+
+---
+
+# 💡 Solution
+
+Project Sentinel continuously combines:
+
+* Predictive maintenance telemetry
+* Satellite methane observations
+* Engineering schematics
+* Physics-based safety calculations
+* AI reasoning
+
+to generate grounded safety assessments and recommended mitigation actions.
+
+The system keeps humans in the decision loop while reducing the time required to investigate potential failures.
+
+---
+
+# ☁️ Microsoft AI Components
+
+Project Sentinel is built around Microsoft technologies:
+
+| Technology                    | Purpose                                   |
+| ----------------------------- | ----------------------------------------- |
+| Azure AI Foundry              | Agent orchestration and model deployment  |
+| Microsoft Phi-4-mini-instruct | Industrial safety reasoning               |
+| GitHub Copilot                | AI-assisted development and documentation |
+| Microsoft Teams               | Adaptive Card alert delivery              |
+
+Azure AI Foundry serves as the central reasoning layer responsible for synthesising telemetry, methane observations, engineering documentation, and physics calculations into actionable safety recommendations.
+
+---
+
+# 🧠 Agent Workflow
+
+The agent follows a ReAct-inspired reasoning process:
+
+1. Observe equipment telemetry
+2. Detect abnormal operating conditions
+3. Retrieve the latest methane observations
+4. Ground reasoning against engineering schematics
+5. Evaluate hydraulic safety constraints
+6. Assess operational risk
+7. Generate mitigation recommendations
+8. Create Teams alert payload
+
+Output structure:
+
+THOUGHT
+
+↓
+
+RISK LEVEL
+
+↓
+
+RECOMMENDED ACTION
+
+↓
+
+CAVEAT
+
+This ensures every recommendation is accompanied by context and safety limitations.
+
+---
+
+# 🏗️ System Architecture
+
+![Project Sentinel architecture showing telemetry ingestion, Azure AI Foundry reasoning, methane monitoring, engineering schematic grounding and Teams alerting](architecture.png)
+
+```text
+┌─────────────────────┐
+│ UCI AI4I Telemetry  │
+└──────────┬──────────┘
+           │
+           ▼
+
+┌─────────────────────────────────┐
+│ Azure AI Foundry                │
+│ Phi-4-mini-instruct             │
+│ ReAct Reasoning Loop            │
+│ Physics-Based Safety Engine     │
+└───────┬───────────────┬─────────┘
+        │               │
+
+        ▼               ▼
+
+┌───────────────┐   ┌───────────────┐
+│ ESA Sentinel  │   │ Equinor Huldra│
+│ Methane Data  │   │ P&ID Schematics│
+└───────────────┘   └───────────────┘
+
+                │
+                ▼
+
+      ┌──────────────────┐
+      │ Teams Alerting   │
+      │ Adaptive Cards   │
+      └──────────────────┘
 ```
-┌─────────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
-│  UCI Telemetry      │     │   SAFETY AGENT       │     │  Equinor Huldra     │
-│  AI4I 2020 Dataset  │────▶│   (ReAct Loop)       │◀────│  P&ID Schematics    │
-│  (CC BY 4.0)        │     │                      │     │  (Open Data)        │
-└─────────────────────┘     │  Rule-based reasoner │     └─────────────────────┘
-                             │  + Joukowski surge   │
-┌─────────────────────┐     │    calculation       │     ┌─────────────────────┐
-│  ESA Sentinel-5P    │     │                      │     │  MS Teams           │
-│  TROPOMI CH4        │────▶│  Gradio Dashboard    │────▶│  Adaptive Card      │
-│  (Copernicus API)   │     │                      │     │  Alert Routing      │
-└─────────────────────┘     └──────────────────────┘     └─────────────────────┘
-```
-
-**Built with GitHub Copilot** for AI-assisted development across the full codebase.
 
 ---
 
-## 📊 Data Sources (All Public)
+# 📊 Public Data Sources
 
-| Source | Description | Licence |
-|--------|-------------|---------|
-| [UCI AI4I 2020](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset) | 10,000-row predictive maintenance telemetry dataset | CC BY 4.0 |
-| [ESA Sentinel-5P TROPOMI](https://www.tropomi.eu/data-products/carbon-monoxide) | Live atmospheric CH4 column data | ESA Open Access |
-| [Equinor Huldra P&IDs](https://marketplace.databricks.com) | Publicly released offshore platform schematics | Equinor Open Data |
+| Source                                       | Purpose                          | Licence         |
+| -------------------------------------------- | -------------------------------- | --------------- |
+| UCI AI4I 2020 Predictive Maintenance Dataset | Equipment telemetry              | CC BY 4.0       |
+| ESA Sentinel-5P TROPOMI                      | Atmospheric methane observations | ESA Open Access |
+| Equinor Huldra P&IDs                         | Engineering schematic grounding  | Open Data       |
 
-> ⚠️ This prototype uses only publicly available data. No proprietary client data is used anywhere in this system.
+All datasets used are publicly available.
+
+No proprietary industrial data is used anywhere within the project.
 
 ---
 
-## 🚀 How to Run
+# ⚙️ Technical Features
 
-### Prerequisites
+## Azure AI Foundry Reasoning
+
+Microsoft Phi-4-mini-instruct generates grounded industrial safety assessments using telemetry, methane observations, engineering schematics, and physics constraints.
+
+---
+
+## Live Methane Monitoring
+
+Project Sentinel retrieves methane scene metadata from the ESA Copernicus Data Space catalogue using the Sentinel-5P TROPOMI mission.
+
+This allows the agent to incorporate real environmental observations into its safety assessment workflow.
+
+---
+
+## Physics-Based Safety Calculations
+
+The system incorporates engineering calculations including hydraulic transient estimation using the Joukowski equation.
+
+This helps ensure recommendations remain physically plausible rather than relying solely on language-model reasoning.
+
+---
+
+## Engineering Document Grounding
+
+Recommendations are grounded against publicly released offshore engineering schematics from the Equinor Huldra platform.
+
+This reduces hallucinations and improves operational relevance.
+
+---
+
+## Microsoft Teams Integration
+
+Project Sentinel generates Adaptive Card payloads suitable for routing into Microsoft Teams workflows and incident response channels.
+
+---
+
+## Transparent Fallback Handling
+
+Every data source contains clearly labelled fallback behaviour.
+
+The system never presents unavailable data as live data.
+
+---
+
+# 📈 Example Incident
+
+### Input
+
+* Machine temperature: 310 K
+* Tool wear: 245 min
+* Torque: 75 Nm
+* Methane anomaly detected
+
+### Agent Assessment
+
+Risk Level: HIGH
+
+### Recommended Action
+
+Inspect isolation valve V-201 before restart and verify pressure conditions prior to reopening.
+
+### Caveat
+
+All recommendations require validation by a qualified field engineer before implementation.
+
+---
+
+# 🌍 Impact
+
+Project Sentinel demonstrates how AI reasoning agents can support:
+
+* Industrial worker safety
+* Methane emissions reduction
+* Faster incident investigation
+* Reduced documentation search time
+* Human-in-the-loop decision making
+
+The project explores how modern AI systems can augment engineering expertise rather than replace it.
+
+---
+
+# 👨‍💻 Solo Project
+
+Project Sentinel was designed, developed, tested, deployed, and documented by a single developer during the Microsoft Agents League Hackathon 2026.
+
+Areas covered include:
+
+* Agent architecture
+* Azure AI Foundry integration
+* Satellite data ingestion
+* Engineering document grounding
+* User interface development
+* Deployment
+* Documentation
+
+---
+
+# 🚀 Running the Project
+
+## Live Demo
+
+Visit:
+
+https://sauravsen34-project-sentinel.hf.space
+
+---
+
+## Local Setup
+
 ```bash
 pip install -r requirements.txt
-```
 
-### Run the dashboard (Databricks or local)
+export AZURE_OPENAI_KEY="your-key"
+export AZURE_OPENAI_ENDPOINT="your-endpoint"
+export AZURE_DEPLOYMENT="Phi-4-mini-instruct"
 
-# Locally:
 python sentinel_dashboard.py
-
-Link: https://sauravsen34-project-sentinel.hf.space
-```
-
-The Gradio dashboard will launch and provide a public share link.
-
-This launches the same Gradio dashboard locally without Databricks.
-
-> **Note for judges:** Both files run the same core logic. 
-> The notebook is recommended as it shows live data connections 
-> verified during development.
----
-
-## 📁 Repository Structure
-
-```
-Project_Sentinel/
-├── README.md                        # This file
-├── requirements.txt                 # Python dependencies
-├── sentinel_dashboard.py            # Full Gradio dashboard (main application)
-└── Project_Sentinel_Brain.ipynb     # Databricks notebook version
 ```
 
 ---
 
-## ⚙️ Key Technical Features
+## Databricks
 
-**Live satellite integration** — Queries ESA Copernicus Data Space OData API in real time for the latest Sentinel-5P CH4 scene. Confirmed live as of June 2026.
+Open:
 
-**Physically grounded calculations** — Hydraulic transient surge pressure estimated using the Joukowski equation (Joukowski, 1898). Emission proxy methodology referenced against OGMP 2.0 Level 4 framework. All estimates clearly labelled as illustrative.
+Project_Sentinel_Brain.ipynb
 
-**ReAct reasoning pattern** — Agent follows a Think → Act → Reflect loop, checking hydraulic safety constraints before recommending any valve operation to prevent fluid hammer damage.
-
-**Microsoft Teams integration** — Generates a formatted Adaptive Card JSON payload ready for routing via Teams webhook.
-
-**Honest fallbacks** — Every data source has a clearly labelled fallback. The system never presents synthetic data as live without flagging it.
+Run all cells.
 
 ---
 
-## 🔒 Safety & Disclaimer
+# 🔒 Safety Notice
 
-> All risk assessments generated by this system are **advisory only**. No automated shutdown or isolation mandate is issued. All recommended actions require verification by a qualified field engineer before execution. Emission estimates are illustrative proxies based on torque load, not direct measurements.
+This project is a research prototype.
+
+All risk assessments are advisory only.
+
+Project Sentinel does not perform automated shutdowns, valve operations, or safety-critical control actions.
+
+All recommendations must be reviewed and approved by qualified personnel before implementation.
 
 ---
 
-## 👤 Author
+# 👤 Author
 
-**Saurav Sen** — Solo mechatronics engineer
+Saurav Sen
+
+Solo Mechatronics Engineer
+
 Microsoft Agents League Hackathon 2026
 
 ---
 
-## 📄 Licence
+# License
 
-Copyright 2026 Saurav Sen. All rights reserved.
-No part of this code may be copied, modified, or distributed without explicit written permission from the author.
+MIT License
+
+Copyright (c) 2026 Saurav Sen
