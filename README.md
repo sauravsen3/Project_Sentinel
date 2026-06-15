@@ -109,7 +109,7 @@ This ensures every recommendation is accompanied by context and safety limitatio
 
 # 🏗️ System Architecture
 
-![Project Sentinel architecture showing telemetry ingestion, Azure AI Foundry reasoning, methane monitoring, engineering schematic grounding and Teams alerting](architecture.png)
+![Project Sentinel architecture showing telemetry ingestion, Azure AI Foundry reasoning, methane monitoring, engineering schematic grounding and Teams alerting](ARCHITECTURE.png)
 
 ```text
 ┌─────────────────────┐
@@ -184,7 +184,7 @@ This helps ensure recommendations remain physically plausible rather than relyin
 
 ## Engineering Document Grounding
 
-Recommendations are grounded against publicly released offshore engineering schematics from the Equinor Huldra platform.
+Recommendations are grounded in publicly released offshore engineering schematics from the Equinor Huldra platform.
 
 This reduces hallucinations and improves operational relevance.
 
@@ -307,7 +307,7 @@ All recommendations must be reviewed and approved by qualified personnel before 
 
 Saurav Sen
 
-Solo Mechatronics Engineer
+Mechatronics Engineer
 
 Microsoft Agents League Hackathon 2026
 
