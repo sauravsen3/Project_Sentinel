@@ -156,6 +156,11 @@ All datasets used are publicly available.
 UCI AI4I 2020 Predictive Maintenance Dataset
 Link: [https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset](url)
 
+ESA Sentinel-5P TROPOMI 
+Link: [https://www.tropomi.eu/data-products/carbon-monoxide](url)
+
+Equinor Huldra P&IDs 
+Link: [https://www.equinor.com/energy/data-sharing](url)
 No proprietary industrial data is used anywhere within the project.
 
 ---
