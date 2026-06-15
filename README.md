@@ -153,6 +153,8 @@ This ensures every recommendation is accompanied by context and safety limitatio
 | Equinor Huldra P&IDs                         | Engineering schematic grounding  | Open Data       |
 
 All datasets used are publicly available.
+UCI AI4I 2020 Predictive Maintenance Dataset
+Link: [https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset](url)
 
 No proprietary industrial data is used anywhere within the project.
 
